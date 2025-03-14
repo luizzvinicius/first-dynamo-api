@@ -19,15 +19,6 @@ public class ProductService {
         this.dynamoDbTemplate = dynamoDbTemplate;
     }
 
-//    public ProductPageDTO getAllProducts(@PositiveOrZero int pageNumber, @Positive @Max(100) int qtdProducts) {
-//        Page<Product> page = dynamoDbTemplate.findAllProductByStatusEquals(PageRequest.of(pageNumber, qtdProducts));
-//        if (page.isEmpty()) {
-//            throw new RecordNotFoundExp("Product");
-//        }
-//        List<ProductDto> productDTOS = page.get().map(productMapper::toDTO).toList();
-//        return new ProductPageDTO(productDTOS, page.getTotalElements(), page.getTotalPages());
-//    }
-
     public ProductDto saveProduct(@Valid ProductDto dto) {
         var result = new QueryBuilderDynamo<>(dto.name(), dynamoDbTemplate, Product.class).createQuery();
 

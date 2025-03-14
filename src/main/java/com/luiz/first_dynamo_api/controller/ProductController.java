@@ -16,12 +16,6 @@ public class ProductController {
         this.productService = productService;
     }
 
-//    @GetMapping
-//    public ResponseEntity<ProductPageDto> getAllProducts(@RequestParam(defaultValue = "0") @PositiveOrZero int page,
-//                                                         @RequestParam(defaultValue = "20") @Positive @Max(100) int qtdProducts) {
-//        return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProducts(page, qtdProducts));
-//    }
-
     @PostMapping
     public ResponseEntity<ProductDto> saveProduct(@RequestBody ProductDto dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(dto));
